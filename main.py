@@ -117,3 +117,64 @@ for i in range(1, n + 1):
             count += "+"
     print(str(i) + count)
 
+# На вход программе подается натуральное число n. Напишите программу, которая находит цифровой корень данного числа.
+# Цифровой корень числа nn получается следующим образом: если сложить все цифры этого числа, затем все цифры найденной суммы и повторить этот процесс,
+# то в результате будет получено однозначное число (цифра), которое и называется цифровым корнем данного числа.
+
+num, total, root = int(input()), 0, 0
+
+while num != 0:
+    total += num % 10
+    num //= 10
+
+while total != 0:
+    root += total % 10
+    total //= 10
+
+if root > 10:
+    print(root % 10 + root // 10 % 10)
+else:
+    print(root)
+
+# На вход программе подается два натуральных числа a и b (a< b).
+# Напишите программу, которая находит натуральное число из отрезка [a;b] с максимальной суммой делителей.
+
+a, b = int(input()), int(input())
+total, digit = 0, 0
+
+for i in range(a, b + 1):
+    count = 0
+    for j in range(1, i + 1):
+        if i % j == 0:
+            count += j
+            if count >= total:
+                total = count
+                digit = i
+print(digit, total)
+
+# Дано натуральное число n. Напишите программу, которая выводит значение суммы факториалов.
+
+# from math import factorial
+n, f, sum_f, sum_f2 = int(input()), 1, 0, 0
+
+# for i in range(1, n + 1):
+#     sum_f2 += factorial(i)
+
+for i in range(1, n + 1):
+    f *= i
+    sum_f += f
+print(sum_f)
+
+# На вход программе подается два натуральных числа a и b (a< b).
+# Напишите программу, которая находит все простые числа от a до b включительно.
+
+a, b = int(input()), int(input())
+
+for i in range(a, b + 1):
+    if i > 1:
+        count = 0
+        for j in range(1, i + 1):
+            if i % j == 0:
+                count += 1
+        if count == 2:
+            print(i)
